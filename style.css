@@ -128,8 +128,8 @@ body {
     position: sticky;
     top: 50vh;
     transform: translateY(-50%);
-    padding-left: auto;
-    padding-right: auto;
+    margin-left: auto;
+    margin-right: auto;
     width: max-content;
 }
 
@@ -291,9 +291,9 @@ ul li ul {
         top: 0;
         margin-left: auto;
         margin-right: auto;
-        width: fit-content;
-        margin-top: 2rem;
-        margin-bottom: 2rem;
+        width: max-content;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
         transform: translateY(0);
     }
 
