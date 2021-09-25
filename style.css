@@ -128,9 +128,9 @@ body {
     position: sticky;
     top: 50vh;
     transform: translateY(-50%);
-    margin-left: auto;
-    margin-right: auto;
-    width: fit-content;
+    padding-left: auto;
+    padding-right: auto;
+    width: max-content;
 }
 
 #headshot_photo {
