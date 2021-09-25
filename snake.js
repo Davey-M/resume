@@ -6,7 +6,7 @@ const sc = document.getElementById('snake_canvas')
 // t stands for conText
 const st = sc.getContext('2d')
 
-const tile = 20
+const tile = 30
 
 const tile_width = Math.ceil(canvasInfo.width / tile)
 const tile_height = Math.ceil(canvasInfo.height / tile)
@@ -66,6 +66,13 @@ function initGame() {
     ]
 
     score = 0
+
+    if (JSON.parse(window.localStorage.getItem('d_m_res_snake'))) {
+        high_score = JSON.parse(window.localStorage.getItem('d_m_res_snake'))
+    }
+    else {
+        high_score = 0
+    }
 
     for (let i = 0; i < apples.length; i++) {
         newApple(i)
@@ -146,6 +153,10 @@ function logic() {
         if (snake[0][0] == apples[i][0] && snake[0][1] == apples[i][1]) {
             newApple(i)
             score++
+            if (score > high_score) {
+                high_score++
+                window.localStorage.setItem('d_m_res_snake', JSON.stringify(high_score))
+            }
             snake.push(prev_snake_last)
         }
     }
@@ -199,15 +210,6 @@ function draw() {
                 (((snake[i][0] + (snake[i - 1][2] * 2)) * tile) + (tile * .5)),
                 (((snake[i][1] + (snake[i - 1][3] * 2)) * tile) + (tile * .5)),
             )
-            
-            st.bezierCurveTo(
-                (snake[i][0] * tile) + (tile * .5),
-                (snake[i][1] * tile) + (tile * .5),
-                (snake[i][0] * tile) + (tile * .5),
-                (snake[i][1] * tile) + (tile * .5),
-                ((snake[i][0] * tile) + (tile * .5)) - (1 * snake[i][2]),
-                ((snake[i][1] * tile) + (tile * .5)) - (1 * snake[i][3]),
-            )
 
             st.bezierCurveTo(
                 (snake[i][0] * tile) + (tile * .5),
@@ -219,14 +221,6 @@ function draw() {
             )
         }
         else {
-            st.bezierCurveTo(
-                (snake[i][0] * tile) + (tile * .5),
-                (snake[i][1] * tile) + (tile * .5),
-                (snake[i][0] * tile) + (tile * .5),
-                (snake[i][1] * tile) + (tile * .5),
-                ((snake[i][0] * tile) + (tile * .5)) - (1 * snake[i][2]),
-                ((snake[i][1] * tile) + (tile * .5)) - (1 * snake[i][3]),
-            )
             
             st.bezierCurveTo(
                 (snake[i][0] * tile) + (tile * .5),

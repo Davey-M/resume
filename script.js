@@ -20,7 +20,7 @@ function checkCollapsed() {
             s.style.height = title.height + 'px'
         }
         else {
-            s.style.height = 'fit-content'
+            s.style.height = 'max-content'
         }
     }
 }
