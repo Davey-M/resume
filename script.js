@@ -1,5 +1,17 @@
 let sections = document.getElementsByClassName('section')
 
+const headshot_photo = document.getElementById('headshot_photo')
+
+function resize() {
+    let bound = headshot_photo.getBoundingClientRect()
+
+    headshot_photo.style.height = bound.width + 'px'
+}
+
+resize()
+
+window.addEventListener('resize', resize)
+
 function checkCollapsed() {
     for (let s of sections) {
         if (s.getAttribute('collapsed') == 'true') {
