@@ -6,7 +6,7 @@ const sc = document.getElementById('snake_canvas')
 // t stands for conText
 const st = sc.getContext('2d')
 
-const tile = 30
+const tile = 25
 
 const tile_width = Math.ceil(canvasInfo.width / tile)
 const tile_height = Math.ceil(canvasInfo.height / tile)
@@ -15,6 +15,9 @@ const colliders = document.getElementsByClassName('collider')
 
 const rules = document.getElementsByClassName('rules')[0]
 const rules_button = document.getElementsByClassName('rules_button')[0]
+
+const score_card = document.getElementById('score')
+const highscore_card = document.getElementById('highscore')
 
 // rules_button.addEventListener('click', () => {
 //     rules.style.opacity = 1
@@ -82,6 +85,8 @@ function initGame() {
 }
 
 initGame()
+score_card.textContent = `Score: ${score}`
+highscore_card.textContent = `High Score: ${high_score}`
 
 let snakeSpeed = 150 - snake.length / 5 + snake.length / 10 % 120
 // let snakeSpeed = 1000 / 2
@@ -157,6 +162,8 @@ function logic() {
                 high_score++
                 window.localStorage.setItem('d_m_res_snake', JSON.stringify(high_score))
             }
+            score_card.textContent = `Score: ${score}`
+            highscore_card.textContent = `High Score: ${high_score}`
             snake.push(prev_snake_last)
         }
     }
@@ -311,6 +318,12 @@ window.addEventListener('keydown', (e) => {
         canvasContainer.style.backgroundColor = 'rgba(240,240,240,.8)'
         paused = false
         main()
+        score_card.textContent = `Score: ${score}`
+        highscore_card.textContent = `High Score: ${high_score}`
+
+        document.getElementById('snake_rules').setAttribute('collapsed', 'false')
+        checkCollapsed()
+        window.scroll(0, document.body.getBoundingClientRect().height)
     }
     else if (key == 'Escape') {
         canvasContainer.style.backgroundColor = 'transparent'
