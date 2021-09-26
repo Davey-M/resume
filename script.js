@@ -15,7 +15,6 @@ window.addEventListener('resize', resize)
 function checkCollapsed() {
     for (let s of sections) {
         if (s.getAttribute('collapsed') == 'true') {
-            let sec = s.getBoundingClientRect()
             let title = s.children[0].getBoundingClientRect()
             s.style.height = title.height + 'px'
         }
