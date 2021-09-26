@@ -291,7 +291,7 @@ ul li ul {
 @media screen and (max-width: 800px) {
     #page_content {
         width: 100%;
-        height: max-content;
+        height: fit-content;
         display: block;
         position: sticky;
         top: 0;
@@ -346,10 +346,5 @@ ul li ul {
     #snakeHider {
         height: 0;
         overflow: hidden;
-    }
-
-    #snake {
-        height: 0;
-        pointer-events: none;
     }
 }
