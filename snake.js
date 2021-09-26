@@ -19,16 +19,6 @@ const rules_button = document.getElementsByClassName('rules_button')[0]
 const score_card = document.getElementById('score')
 const highscore_card = document.getElementById('highscore')
 
-// rules_button.addEventListener('click', () => {
-//     rules.style.opacity = 1
-//     rules.style.pointerEvents = 'all'
-// })
-
-// rules.addEventListener('click', () => {
-//     rules.style.opacity = 0
-//     rules.style.pointerEvents = 'none'
-// })
-
 sc.width = tile_width * tile
 sc.height = tile_height * tile
 
